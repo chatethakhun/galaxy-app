@@ -4,8 +4,8 @@ import React from "react";
 const ChatMainPage = () => {
   return (
     <section className="flex">
-      <div className="border-r">
-        <ItemList noItems>
+      <div className="border-r min-w-[300px]">
+        <ItemList title="Chats" noItems>
           <div>Chat List</div>
         </ItemList>
       </div>

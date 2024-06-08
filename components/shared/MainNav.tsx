@@ -18,8 +18,8 @@ const MainNav = () => {
       <Image src="/logo.svg" alt="Logo" width={32} height={32} />
       <div className="flex gap-3">
         <DropdownMenu>
-          <DropdownMenuTrigger>
-            <Button>Theme</Button>
+          <DropdownMenuTrigger asChild>
+            <Button onClick={() => {}}>Theme</Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuItem onClick={() => setTheme("dark")}>
