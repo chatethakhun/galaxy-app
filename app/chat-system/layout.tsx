@@ -6,7 +6,7 @@ type ChatLayoutProps = {
 };
 const ChatLayout = ({ children }: ChatLayoutProps) => {
   return (
-    <div className="h-screen flex gap-3">
+    <div className="h-screen flex">
       <MainSideNav items={chatSystemSideMenu} prefixPath="/chat-system" />
       {children}
     </div>

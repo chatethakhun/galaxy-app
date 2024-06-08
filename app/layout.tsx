@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Rubik } from "next/font/google";
 import "./globals.css";
 import "react-tooltip/dist/react-tooltip.css";
 import ClerkClientProvider from "@/providers/ClerkClientProvider";
 import MainNav from "@/components/shared/MainNav";
+import { ThemeProvider } from "@/providers/ThemeProvider";
+import { useTheme } from "next-themes";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Rubik({ subsets: ["arabic"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,10 +22,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ClerkClientProvider>
-          <MainNav />
-          {children}
-        </ClerkClientProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ClerkClientProvider>
+            <MainNav />
+            {children}
+          </ClerkClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
