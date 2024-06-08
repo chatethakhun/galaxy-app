@@ -9,8 +9,8 @@ export const chatSystemSideMenu: SideItem[] = [
     href: "chats",
   },
   {
-    name: "Friends",
+    name: "Friend requests",
     icon: <LuUsers2 size={32} />,
-    href: "friends",
+    href: "friend-requests",
   },
 ];
