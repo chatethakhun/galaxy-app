@@ -1,4 +1,4 @@
-import { v } from "convex/values";
+import { ConvexError, v } from "convex/values";
 import { internalMutation, internalQuery } from "./_generated/server";
 
 export const create = internalMutation({
@@ -30,7 +30,7 @@ export const update = internalMutation({
     );
 
     if (!user) {
-      return;
+      throw new ConvexError("User not found");
     }
 
     await ctx.db.patch(user._id, args);
@@ -46,5 +46,23 @@ export const get = internalQuery({
       .query("users")
       .withIndex("by_clerkId", (q) => q.eq("clerkId", args.clerkId))
       .unique();
+  },
+});
+
+export const remove = internalMutation({
+  args: {
+    clerkId: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const user = await ctx.db
+      .query("users")
+      .withIndex("by_clerkId", (q) => q.eq("clerkId", args.clerkId))
+      .unique();
+
+    if (!user) {
+      throw new ConvexError("User not found");
+    }
+
+    await ctx.db.delete(user._id);
   },
 });

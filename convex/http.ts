@@ -46,6 +46,8 @@ const handleWebhook = httpAction(async (ctx, req) => {
       if (user) {
         console.log(`Updating user with ${event.data.id} with ${event.data}`);
       }
+
+      break;
     case CLERK_WEBHOOK.USER_UPDATED:
       console.log(`Updating/Creating user: ${event.data.id}`);
 
@@ -70,6 +72,13 @@ const handleWebhook = httpAction(async (ctx, req) => {
         email: userData.email_addresses[0].email_address,
         clerkId: userData.id,
         imageUrl: userData.image_url,
+      });
+
+      break;
+    case CLERK_WEBHOOK.USER_DELETED:
+      console.log(`Deleting user: ${event.data.id}`);
+      await ctx.runMutation(internal.user.remove, {
+        clerkId: event.data.id!,
       });
     default:
       console.log(`Webhook event not handled: ${event.type}`);
