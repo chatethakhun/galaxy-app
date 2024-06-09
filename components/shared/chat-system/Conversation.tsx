@@ -8,12 +8,12 @@ import React from "react";
 type Props = {
   conversation: Doc<"conversations">;
   otherMember?: Doc<"users"> | null;
+  lastMessage?: Doc<"messages"> | null;
 };
 
-const Conversation = ({ conversation, otherMember }: Props) => {
+const Conversation = ({ conversation, otherMember, lastMessage }: Props) => {
   const params = useParams();
   const isActive = params.chatId === conversation._id;
-
   return (
     <Link href={`/chat-system/chats/${conversation._id}`}>
       <div
@@ -34,7 +34,7 @@ const Conversation = ({ conversation, otherMember }: Props) => {
               {otherMember?.username ?? otherMember?.email}
             </div>
             <span className="font-light text-xs">
-              {conversation.lastMessageId ?? "Start message..."}
+              {lastMessage ? lastMessage.content : "Start message..."}
             </span>
           </div>
         </div>

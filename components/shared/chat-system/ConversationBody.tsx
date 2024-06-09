@@ -17,10 +17,6 @@ const ConversationBody = (props: Props) => {
     id: chatId as Id<"conversations">,
   });
 
-  console.log(messages);
-
-  const isCurrentUser = true;
-
   return (
     <div className="h-full flex flex-col-reverse px-4 gap-2 overflow-scroll py-2">
       {messages?.map((message) => (
