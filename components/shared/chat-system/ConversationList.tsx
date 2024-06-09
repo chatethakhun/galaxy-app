@@ -4,12 +4,10 @@ import { useQuery } from "convex/react";
 import React from "react";
 import ItemListContainer from "@/components/shared/ItemListContainer";
 import Conversation from "@/components/shared/chat-system/Conversation";
+import { Doc } from "@/convex/_generated/dataModel";
 
-type Props = {};
-
-const ConversationList = (props: Props) => {
+const ConversationList = () => {
   const conversations = useQuery(api.conversation.get);
-
   return (
     <div className="h-full">
       <ItemListContainer data={conversations} title="Chats">
@@ -19,6 +17,11 @@ const ConversationList = (props: Props) => {
               key={conversation.conversation._id}
               conversation={conversation.conversation}
               otherMember={conversation.otherMember}
+              lastMessage={
+                conversation.lastMessage as Doc<"messages"> & {
+                  isCurrentUser: boolean;
+                }
+              }
             />
           );
         })}

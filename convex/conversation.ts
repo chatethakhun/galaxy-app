@@ -46,9 +46,19 @@ export const get = query({
 
         const otherMember = await ctx.db.get(otherMembership.memberId);
 
+        let lastMessage = null;
+
+        if (conversation.lastMessageId) {
+          lastMessage = await ctx.db.get(conversation.lastMessageId);
+        }
+
         return {
           conversation,
           otherMember,
+          lastMessage: {
+            ...lastMessage,
+            isCurrentUser: lastMessage?.senderId === currentUser._id,
+          },
         };
       })
     );

@@ -4,11 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import React from "react";
+import { FiCornerUpLeft } from "react-icons/fi";
 
 type Props = {
   conversation: Doc<"conversations">;
   otherMember?: Doc<"users"> | null;
-  lastMessage?: Doc<"messages"> | null;
+  lastMessage?: Doc<"messages"> & { isCurrentUser: boolean };
 };
 
 const Conversation = ({ conversation, otherMember, lastMessage }: Props) => {
@@ -33,7 +34,9 @@ const Conversation = ({ conversation, otherMember, lastMessage }: Props) => {
             <div className="font-semibold">
               {otherMember?.username ?? otherMember?.email}
             </div>
-            <span className="font-light text-xs">
+
+            <span className="font-light text-xs flex gap-2 items-center">
+              {!lastMessage?.isCurrentUser && <FiCornerUpLeft />}
               {lastMessage ? lastMessage.content : "Start message..."}
             </span>
           </div>
