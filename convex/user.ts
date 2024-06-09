@@ -30,7 +30,7 @@ export const update = internalMutation({
     );
 
     if (!user) {
-      throw new ConvexError("User not found");
+      return;
     }
 
     await ctx.db.patch(user._id, args);
@@ -60,7 +60,7 @@ export const remove = internalMutation({
       .unique();
 
     if (!user) {
-      throw new ConvexError("User not found");
+      return;
     }
 
     await ctx.db.delete(user._id);
