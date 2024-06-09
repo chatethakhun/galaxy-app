@@ -5,6 +5,7 @@ import { useQuery } from "convex/react";
 import { useParams } from "next/navigation";
 import React from "react";
 import ChatHeader from "./ChatHeader";
+import ChatInput from "./ChatInput";
 
 type Props = {};
 
@@ -20,6 +21,8 @@ const ConversationRoom = (props: Props) => {
       {conversation?.otherMember && (
         <ChatHeader contact={conversation.otherMember} />
       )}
+
+      <ChatInput />
     </div>
   );
 };
