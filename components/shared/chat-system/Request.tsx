@@ -5,6 +5,7 @@ import { FaCheck } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { useMutationState } from "@/hooks/useMutationState";
 import { api } from "@/convex/_generated/api";
+import toast, { useToaster } from "react-hot-toast";
 
 type Props = { request: any };
 
@@ -12,12 +13,24 @@ function Request({ request }: Props) {
   const { mutate: rejectRequest, pending } = useMutationState(
     api.request.reject
   );
-  const onConfirm = () => {};
+
+  const { mutate: acceptRequest, pending: acceptFriendRequestPending } =
+    useMutationState(api.request.acceptFriendRequest);
+
+  const onConfirm = async () => {
+    try {
+      await acceptRequest({ id: request.request._id });
+      toast.success("Request accepted successfully.");
+    } catch (error) {
+      toast.error("Failed to accept request, please try again later.");
+    }
+  };
   const onReject = async () => {
     try {
       await rejectRequest({ requestId: request.request._id });
+      toast.success("Request rejected successfully.");
     } catch (error) {
-      console.error(error);
+      toast.error("Failed to reject request, please try again later.");
     }
   };
   return (

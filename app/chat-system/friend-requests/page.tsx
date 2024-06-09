@@ -19,6 +19,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useMutationState } from "@/hooks/useMutationState";
 import Request from "@/components/shared/chat-system/Request";
+import toast from "react-hot-toast";
+import { ConvexError } from "convex/values";
 
 const schema = z.object({
   email: z
@@ -32,6 +34,7 @@ const FriendListPage = () => {
   const { mutate: createRequestFriend, pending: isMutating } = useMutationState(
     api.request.create
   );
+
   const { control, handleSubmit, reset } = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -45,8 +48,10 @@ const FriendListPage = () => {
     await createRequestFriend({ email })
       .then(() => {
         reset();
+        toast.success("Request sent successfully.");
       })
       .catch((err) => {
+        toast.error(err.message);
         console.error(err);
       });
   };

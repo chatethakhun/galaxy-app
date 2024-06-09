@@ -6,6 +6,7 @@ import ClerkClientProvider from "@/providers/ClerkClientProvider";
 import MainNav from "@/components/shared/MainNav";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { useTheme } from "next-themes";
+import { Toaster } from "react-hot-toast";
 
 const inter = Rubik({ subsets: ["arabic"] });
 
@@ -30,6 +31,7 @@ export default function RootLayout({
         >
           <ClerkClientProvider>
             <MainNav />
+            <Toaster />
             {children}
           </ClerkClientProvider>
         </ThemeProvider>
