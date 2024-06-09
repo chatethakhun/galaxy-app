@@ -6,6 +6,8 @@ type Props = {
 };
 
 const Friend = ({ friendInfo }: Props) => {
+  if (!friendInfo.myFriend) return null;
+
   return (
     <div className="flex justify-between">
       <div className="flex items-center gap-3">
