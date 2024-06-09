@@ -9,9 +9,7 @@ import toast, { useToaster } from "react-hot-toast";
 import { Doc } from "@/convex/_generated/dataModel";
 
 type Props = {
-  request: Doc<"requests"> & { sender: Doc<"users"> } & {
-    request: Doc<"users">;
-  };
+  request: { sender: Doc<"users">; request: Doc<"requests"> };
 };
 
 function Request({ request }: Props) {
