@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 
 type Props = {
-  friendInfo: Doc<"friends"> & { myFriend: Doc<"users"> };
+  friendInfo: Doc<"friends"> & { myFriend: Doc<"users"> | null };
 };
 
 const Friend = ({ friendInfo }: Props) => {
