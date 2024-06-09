@@ -51,8 +51,22 @@ const handleWebhook = httpAction(async (ctx, req) => {
 
       const userData = event.data as UserJSON;
 
+      const existingUser = await ctx.runQuery(internal.user.get, {
+        clerkId: event.data.id!,
+      });
+
+      if (existingUser) {
+        await ctx.runMutation(internal.user.update, {
+          clerkId: userData.id,
+          imageUrl: userData.image_url,
+          username: `${userData?.first_name ?? "John"} ${userData?.last_name ?? "Doe"}`,
+        });
+
+        return new Response("OK", { status: 200 });
+      }
+
       await ctx.runMutation(internal.user.create, {
-        username: `${userData.first_name} ${userData.last_name}`,
+        username: `${userData?.first_name ?? "John"} ${userData?.last_name ?? "Doe"}`,
         email: userData.email_addresses[0].email_address,
         clerkId: userData.id,
         imageUrl: userData.image_url,
