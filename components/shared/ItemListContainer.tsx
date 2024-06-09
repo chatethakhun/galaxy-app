@@ -10,7 +10,7 @@ type Props = {
 
 const ItemListContainer = ({ children, data, title }: Props) => {
   return (
-    <div className="">
+    <div className="px=5">
       {data ? (
         <ItemList title={title} noItems={Number(data?.length) === 0}>
           {children}

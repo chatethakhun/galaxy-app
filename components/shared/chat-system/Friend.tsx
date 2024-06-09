@@ -10,7 +10,7 @@ const Friend = ({ friendInfo }: Props) => {
   if (!friendInfo.myFriend) return null;
 
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between px-5 py-2">
       <div className="flex items-center gap-3">
         <Image
           src={friendInfo.myFriend.imageUrl}

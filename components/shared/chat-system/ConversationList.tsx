@@ -10,7 +10,6 @@ type Props = {};
 const ConversationList = (props: Props) => {
   const conversations = useQuery(api.conversation.get);
 
-  console.log(conversations);
   return (
     <div className="h-full">
       <ItemListContainer data={conversations} title="Chats">

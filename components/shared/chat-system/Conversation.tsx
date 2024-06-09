@@ -1,6 +1,8 @@
 import { Doc } from "@/convex/_generated/dataModel";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import React from "react";
 
 type Props = {
@@ -9,9 +11,17 @@ type Props = {
 };
 
 const Conversation = ({ conversation, otherMember }: Props) => {
+  const params = useParams();
+  const isActive = params.chatId === conversation._id;
+
+  console.log({ isActive });
   return (
     <Link href={`/chat-system/chats/${conversation._id}`}>
-      <div className="flex justify-between cursor-pointer">
+      <div
+        className={cn("flex justify-between cursor-pointer px-5 py-2", {
+          "bg-blue-100": isActive,
+        })}
+      >
         <div className="flex items-center gap-3">
           <Image
             src={otherMember?.imageUrl || "/images/avatar.png"}

@@ -17,9 +17,9 @@ const ItemList = ({
   onActionIcon,
 }: Props) => {
   return (
-    <section className="h-screen w-full px-5 text-sm">
+    <section className="h-screen w-full text-sm">
       <div className="flex items-center justify-between">
-        <div className="font-bold text-lg mb-3">{title}</div>
+        <div className="font-bold text-lg mb-3 px-5">{title}</div>
         {onAction && (
           <Button variant="ghost" size="sm" onClick={onAction}>
             {onActionIcon}
