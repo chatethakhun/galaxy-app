@@ -47,7 +47,6 @@ const handleWebhook = httpAction(async (ctx, req) => {
         console.log(`Updating user with ${event.data.id} with ${event.data}`);
       }
 
-      break;
     case CLERK_WEBHOOK.USER_UPDATED:
       console.log(`Updating/Creating user: ${event.data.id}`);
 
@@ -74,7 +73,6 @@ const handleWebhook = httpAction(async (ctx, req) => {
         imageUrl: userData.image_url,
       });
 
-      break;
     case CLERK_WEBHOOK.USER_DELETED:
       console.log(`Deleting user: ${event.data.id}`);
       await ctx.runMutation(internal.user.remove, {
