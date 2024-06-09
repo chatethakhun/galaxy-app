@@ -47,6 +47,17 @@ const handleWebhook = httpAction(async (ctx, req) => {
         console.log(`Updating user with ${event.data.id} with ${event.data}`);
       }
 
+      const userDataJson = event.data as UserJSON;
+
+      await ctx.runMutation(internal.user.create, {
+        username: `${userDataJson.first_name ?? "John"} ${
+          userDataJson.last_name ?? "Doe"
+        }`,
+        email: userDataJson.email_addresses[0].email_address,
+        clerkId: event.data.id!,
+        imageUrl: userDataJson.image_url,
+      });
+
     case CLERK_WEBHOOK.USER_UPDATED:
       console.log(`Updating/Creating user: ${event.data.id}`);
 

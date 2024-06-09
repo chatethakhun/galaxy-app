@@ -25,10 +25,6 @@ export const update = internalMutation({
       .withIndex("by_clerkId", (q) => q.eq("clerkId", args.clerkId))
       .unique();
 
-    console.log(
-      `Updating user with ${args.clerkId} with ${JSON.stringify(args)}`
-    );
-
     if (!user) {
       return;
     }
