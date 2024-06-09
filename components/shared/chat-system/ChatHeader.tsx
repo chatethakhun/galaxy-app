@@ -9,7 +9,7 @@ type Props = {
 
 const ChatHeader = ({ contact }: Props) => {
   return (
-    <div className="flex w-full border-b px-5 py-3 absolute top-0">
+    <div className="flex w-full border-b px-5 py-3">
       <div>
         <Image
           src={contact?.imageUrl || "/images/avatar.png"}

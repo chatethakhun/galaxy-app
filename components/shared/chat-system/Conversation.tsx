@@ -14,7 +14,6 @@ const Conversation = ({ conversation, otherMember }: Props) => {
   const params = useParams();
   const isActive = params.chatId === conversation._id;
 
-  console.log({ isActive });
   return (
     <Link href={`/chat-system/chats/${conversation._id}`}>
       <div
