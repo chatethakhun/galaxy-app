@@ -1,10 +1,11 @@
+import { Doc } from "@/convex/_generated/dataModel";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 type Props = {
-  conversation: Conversation;
-  otherMember?: User | null;
+  conversation: Doc<"conversations">;
+  otherMember?: Doc<"users"> | null;
 };
 
 const Conversation = ({ conversation, otherMember }: Props) => {

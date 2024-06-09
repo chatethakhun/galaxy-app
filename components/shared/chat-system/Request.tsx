@@ -6,8 +6,13 @@ import { ImCross } from "react-icons/im";
 import { useMutationState } from "@/hooks/useMutationState";
 import { api } from "@/convex/_generated/api";
 import toast, { useToaster } from "react-hot-toast";
+import { Doc } from "@/convex/_generated/dataModel";
 
-type Props = { request: any };
+type Props = {
+  request: Doc<"requests"> & { sender: Doc<"users"> } & {
+    request: Doc<"users">;
+  };
+};
 
 function Request({ request }: Props) {
   const { mutate: rejectRequest, pending } = useMutationState(

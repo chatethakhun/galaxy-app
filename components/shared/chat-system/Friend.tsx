@@ -1,8 +1,9 @@
+import { Doc } from "@/convex/_generated/dataModel";
 import Image from "next/image";
 import React from "react";
 
 type Props = {
-  friendInfo: Friend;
+  friendInfo: Doc<"friends"> & { myFriend: Doc<"users"> };
 };
 
 const Friend = ({ friendInfo }: Props) => {
