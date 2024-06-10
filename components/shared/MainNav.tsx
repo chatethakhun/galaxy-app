@@ -10,12 +10,15 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 
 const MainNav = () => {
   const { setTheme } = useTheme();
   return (
     <nav className=" flex justify-between items-center w-full mx-auto py-3 px-2">
-      <Image src="/logo.svg" alt="Logo" width={32} height={32} />
+      <Link href="/">
+        <Image src="/logo.svg" alt="Logo" width={32} height={32} />
+      </Link>
       <div className="flex gap-3">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
