@@ -19,3 +19,16 @@ export const chatSystemSideMenu: SideItem[] = [
     href: "friends",
   },
 ];
+
+export const adminDashboardSideMenu: SideItem[] = [
+  {
+    name: "Conversations",
+    icon: <BsChatText size={32} />,
+    href: "conversations",
+  },
+  {
+    name: "Users",
+    icon: <LuUsers2 size={32} />,
+    href: "users",
+  },
+];

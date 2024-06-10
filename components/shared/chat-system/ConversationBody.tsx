@@ -24,6 +24,7 @@ const ConversationBody = (props: Props) => {
           key={message._id}
           isCurrentUser={message.isCurrentUser}
           content={message.content[0]}
+          timeCreated={message._creationTime}
         />
       ))}
     </div>

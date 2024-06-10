@@ -1,5 +1,5 @@
 import { ConvexError, v } from "convex/values";
-import { internalMutation, internalQuery } from "./_generated/server";
+import { internalMutation, internalQuery, query } from "./_generated/server";
 
 export const create = internalMutation({
   args: {
@@ -60,5 +60,12 @@ export const remove = internalMutation({
     }
 
     await ctx.db.delete(user._id);
+  },
+});
+
+export const getAllUsers = query({
+  args: {},
+  handler: async (ctx) => {
+    return ctx.db.query("users").collect();
   },
 });

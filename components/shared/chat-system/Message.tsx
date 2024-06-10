@@ -1,12 +1,13 @@
-import { cn } from "@/lib/utils";
+import { cn, timeFormat } from "@/lib/utils";
 import React from "react";
 
 type Props = {
   isCurrentUser: boolean;
   content: string;
+  timeCreated: number;
 };
 
-const Message = ({ isCurrentUser = false, content }: Props) => {
+const Message = ({ isCurrentUser = false, content, timeCreated }: Props) => {
   return (
     <div className={cn({ "justify-end": isCurrentUser }, "flex")}>
       <section
@@ -24,7 +25,7 @@ const Message = ({ isCurrentUser = false, content }: Props) => {
             "text-white": isCurrentUser,
           })}
         >
-          12:30
+          {timeFormat(timeCreated, "th-TH")}
         </span>
       </section>
     </div>
