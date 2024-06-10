@@ -4,8 +4,8 @@ import React from "react";
 
 const ChatMainPage = () => {
   return (
-    <section className="flex">
-      <div className="border-r min-w-[500px]">
+    <section className="flex w-full">
+      <div className="border-r w-full md:w-[400px]">
         <ConversationList />
       </div>
     </section>

@@ -11,8 +11,8 @@ type Props = {};
 const FriendsPage = (props: Props) => {
   const friends = useQuery(api.friend.getFriends);
   return (
-    <div className="flex">
-      <div className="border-r md:min-w-[500px]">
+    <div className="flex w-full">
+      <div className="border-r w-full md:w-[400px]">
         {friends ? (
           <ItemList title="Friends" noItems={Number(friends?.length) === 0}>
             {friends.map((friend) => (

@@ -1,7 +1,9 @@
 import { Id } from "@/convex/_generated/dataModel";
 import { User } from "@/types/user";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+import { IoChevronBack } from "react-icons/io5";
 
 type Props = {
   contact: User & { lastSeenMessageId: Id<"messages"> | undefined };
@@ -9,7 +11,10 @@ type Props = {
 
 const ChatHeader = ({ contact }: Props) => {
   return (
-    <div className="flex w-full border-b px-5 py-3">
+    <div className="flex w-full border-b px-5 py-3 gap-2 items-center">
+      <Link className="md:hidden" href="/chat-system/chats">
+        <IoChevronBack size={24} />
+      </Link>
       <div>
         <Image
           src={contact?.imageUrl || "/images/avatar.png"}

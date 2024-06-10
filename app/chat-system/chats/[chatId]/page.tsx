@@ -7,7 +7,7 @@ type Props = {};
 const ChatPage = (props: Props) => {
   return (
     <section className="flex w-full">
-      <div className="min-w-[300px] max-w-[300px]">
+      <div className="hidden md:block">
         <ConversationList />
       </div>
       <ConversationRoom />

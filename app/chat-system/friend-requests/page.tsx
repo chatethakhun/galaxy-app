@@ -57,8 +57,8 @@ const FriendListPage = () => {
   };
 
   return (
-    <section className="flex">
-      <div className="border-r md:min-w-[500px]">
+    <section className="flex w-full">
+      <div className="border-r w-full md:w-[400px]">
         {requests ? (
           <ItemList
             title="Friend requests"

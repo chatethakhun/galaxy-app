@@ -36,8 +36,10 @@ const Conversation = ({ conversation, otherMember, lastMessage }: Props) => {
             </div>
 
             <span className="font-light text-xs flex gap-2 items-center">
-              {!lastMessage?.isCurrentUser && <FiCornerUpLeft />}
-              {lastMessage ? lastMessage.content : "Start message..."}
+              {!lastMessage?.isCurrentUser && lastMessage?.content && (
+                <FiCornerUpLeft />
+              )}
+              {lastMessage?.content ?? "Start message..."}
             </span>
           </div>
         </div>

@@ -46,16 +46,16 @@ function Request({ request }: Props) {
           height={42}
           className="rounded-full"
         />
-        <div>
+        <div className="overflow-hidden">
           <div className="font-semibold">{request.sender.username}</div>
           <div className="text-sm text-gray-400">{request.sender.email}</div>
         </div>
       </div>
 
-      <div>
+      <div className="flex">
         <Button
           variant="ghost"
-          size="sm"
+          size="icon"
           className="text-green-500"
           onClick={onConfirm}
         >
@@ -63,7 +63,7 @@ function Request({ request }: Props) {
         </Button>
         <Button
           variant="ghost"
-          size="sm"
+          size="icon"
           className="text-red-500"
           onClick={onReject}
         >
